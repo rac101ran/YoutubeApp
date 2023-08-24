@@ -9,6 +9,8 @@ interface VideoService {
     @POST("/users/signup")
     fun createSignUpUser(@Body signUpRequest: UserSignUpRequest): Call<ApiResponse>
 
+    @GET("/users/login")
+    fun loginUser(@Query("user_email") email : String, @Query("password") password : String) : Call<LoginResponse>
 
     @GET("/videos")
     suspend fun getAllVideosResponse(

@@ -20,13 +20,17 @@ class MainActivity : AppCompatActivity() {
         if(this.getSharedPreferences("com.example.youtubeapp", Context.MODE_PRIVATE).getBoolean("session",false)) {
             startActivity(Intent(this,HomePage::class.java))
         }else {
-            supportFragmentManager.beginTransaction().replace(R.id.frameLayoutHomeId, SignUpFragment()).commit()
+            supportFragmentManager.beginTransaction().replace(R.id.frameLayoutHomeId, WelcomepageChoose()).commit()
         }
 
         onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 val fragment = supportFragmentManager.findFragmentById(R.id.frameLayoutHomeId)
                 if(fragment is SignUpFragment) {
+                    supportFragmentManager.beginTransaction().replace(R.id.frameLayoutHomeId, WelcomepageChoose()).commit()
+                }else if(fragment is LoginUser) {
+                    supportFragmentManager.beginTransaction().replace(R.id.frameLayoutHomeId, WelcomepageChoose()).commit()
+                }else {
                     this@MainActivity.finish()
                 }
             }

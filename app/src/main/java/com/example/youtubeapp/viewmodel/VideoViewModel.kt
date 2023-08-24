@@ -123,5 +123,20 @@ class VideoViewModel : ViewModel() {
         }
     }
 
+    suspend fun loginUserRequest(user_email: String , password : String) : LoginResponse? {
+        return withContext(Dispatchers.IO) {
+            try {
+                val response = videoService.loginUser(user_email,password).execute()
+                if(response.isSuccessful) {
+                    response.body()
+                }else {
+                    null
+                }
+            }catch(e : IOException) {
+                null
+            }
+        }
+    }
+
 }
 

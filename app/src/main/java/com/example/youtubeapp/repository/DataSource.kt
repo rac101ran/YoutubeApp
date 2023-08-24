@@ -4,6 +4,14 @@ import android.graphics.pdf.PdfDocument.PageInfo
 import com.google.gson.annotations.SerializedName
 import java.math.BigInteger
 
+
+data class UserLoginResponse(
+    @SerializedName("name") val user_name : String,
+    @SerializedName("email") val user_email : String,
+    @SerializedName("id") val id : Int
+)
+data class LoginResponse(@SerializedName("status") val status: Int, @SerializedName("message") val message: String , @SerializedName("data") val data : UserLoginResponse)
+
 data class UserSignUpResponse(
     @SerializedName("user_name") val user_name : String,
     @SerializedName("user_email") val user_email : String,
