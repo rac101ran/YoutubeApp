@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SignUpFragment">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SignUpFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/user_wallpaper_id"
@@ -30,14 +36,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@drawable/yt"
-        app:layout_constraintBottom_toBottomOf="@id/user_wallpaper_id"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/yt"
+            app:layout_constraintBottom_toBottomOf="@id/user_wallpaper_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -66,7 +72,7 @@
                 android:hint=" Full name" />
 
             <EditText
-                android:id="@+id/username_id"
+                android:id="@+id/user_email_id"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.1"
@@ -74,7 +80,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/provider_edit_text"
                 android:padding="2dp"
-                android:hint=" Username" />
+                android:hint=" User email" />
 
 
             <EditText
@@ -120,4 +126,5 @@
             android:text="SIGN UP " />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

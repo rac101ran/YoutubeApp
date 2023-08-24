@@ -1,6 +1,8 @@
 package com.example.youtubeapp
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,8 +25,8 @@ class WatchLaterFragment : Fragment() {
     private lateinit var videoViewModel: VideoViewModel
     private lateinit var videoAdapter: GenericAdapter<VideoData>
     private lateinit var watchLaterMainList: MutableList<VideoData>
-    private lateinit var binding : FragmentWatchLaterBinding
-    private var userId :Int? = null
+    private lateinit var binding: FragmentWatchLaterBinding
+    private var userId: Int? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,23 +36,19 @@ class WatchLaterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-         binding = FragmentWatchLaterBinding.inflate(layoutInflater)
-         return binding.root
+        binding = FragmentWatchLaterBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         watchLaterMainList = mutableListOf()
         videoViewModel = ViewModelProvider(this)[VideoViewModel::class.java]
-
-        userId = 1
-
-        videoViewModel.getAllWatchLaterVideos(userId)
-
+        userId = context?.getSharedPreferences("com.example.youtubeapp", Context.MODE_PRIVATE)?.getInt("id",-1)
 
         videoAdapter = GenericAdapter(watchLaterMainList,
             bindingInflater = { inflater, parent, attachToParent ->
-                VideoCardBinding.inflate(inflater, parent, attachToParent)
+                WatchLaterCardBinding.inflate(inflater, parent, attachToParent)
             },
             onBind = { binding, video ->
                 // Bind data to the layout using view binding
@@ -61,8 +59,11 @@ class WatchLaterFragment : Fragment() {
 
                 watchLaterBinding.deleteFromWatchLaterId.setOnClickListener {
                     viewLifecycleOwner.lifecycleScope.launch {
-                        val response = videoViewModel.deleteFromWatchLaterList(video.videoId, userId)
-                        if(response!=null && response.code == 200) {
+                        Log.e("message","remove clicked...")
+                        val response =
+                            videoViewModel.deleteFromWatchLaterList(video.videoId, userId)
+                        if (response != null && response.code == 200) {
+                            Log.e("message",response.code.toString())
                             watchLaterMainList.remove(video)
                             videoAdapter.updateList(watchLaterMainList)
                         }
@@ -70,7 +71,7 @@ class WatchLaterFragment : Fragment() {
                 }
 
                 Glide.with(this)
-                    .load(video.thumbnailUrl.removeRange(4,5))
+                    .load(video.thumbnailUrl.removeRange(4, 5))
                     .into(binding.watchlaterImage)
 
                 binding.executePendingBindings()
@@ -85,6 +86,8 @@ class WatchLaterFragment : Fragment() {
             watchLaterMainList.addAll(videos)
             videoAdapter.updateList(watchLaterMainList)
         }
+
+        videoViewModel.getAllWatchLaterVideos(userId)
 
     }
 

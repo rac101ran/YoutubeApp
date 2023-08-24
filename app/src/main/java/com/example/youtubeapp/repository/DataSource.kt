@@ -2,6 +2,21 @@ package com.example.youtubeapp.repository
 
 import android.graphics.pdf.PdfDocument.PageInfo
 import com.google.gson.annotations.SerializedName
+import java.math.BigInteger
+
+data class UserSignUpResponse(
+    @SerializedName("user_name") val user_name : String,
+    @SerializedName("user_email") val user_email : String,
+    @SerializedName("password") val password : String,
+    @SerializedName("id") val id : Int
+)
+
+data class ApiResponse(@SerializedName("status") val status: Int, @SerializedName("message") val message: String , @SerializedName("data") val data : UserSignUpResponse)
+data class UserSignUpRequest(
+    @SerializedName("user_name") val user_name : String,
+    @SerializedName("user_email") val user_email : String,
+    @SerializedName("password") val password : String,
+)
 
 data class VideoData(
     @SerializedName("id") val id : Int,

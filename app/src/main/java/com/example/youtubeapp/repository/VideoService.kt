@@ -1,13 +1,15 @@
 package com.example.youtubeapp.repository
 
 import retrofit2.Call
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.Response
+import retrofit2.http.*
 
 interface VideoService {
+
+    @POST("/users/signup")
+    fun createSignUpUser(@Body signUpRequest: UserSignUpRequest): Call<ApiResponse>
+
+
     @GET("/videos")
     suspend fun getAllVideosResponse(
         @Query("page") page: Int,
@@ -15,19 +17,19 @@ interface VideoService {
         @Query("userId") userId: Int?
     ): VideoResponse
 
-    @POST(":userId/watch-later/:videoId")
+    @POST("/customer/{userId}/watch-later/{videoId}")
     fun addVideoToWatchLater(
         @Path("userId") userId: Int?,
         @Path("videoId") videoId: String
-    ): AddWatchLaterResponse
+    ): Call<AddWatchLaterResponse>
 
-    @GET(":userId/watch-later/all")
+    @GET("/customer/{userId}/watch-later/all")
     suspend fun getAllWatchLaterVideos(
         @Path("userId") userId: Int?
     ): AllWatchLaterResponse
 
-    @DELETE(":userId/watch-later/:videoId")
-    suspend fun deleteWatchListVideo(
+    @POST("/customer/{userId}/delete-watch-later/{videoId}")
+    fun deleteWatchListVideo(
         @Path("userId") userId : Int?,
         @Path("videoId") videoId : String
     ): Call<AddWatchLaterResponse>
