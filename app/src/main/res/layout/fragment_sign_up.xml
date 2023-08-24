@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/user_wallpaper_id"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="@drawable/user_wallpaper_bacckground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:fontFamily="@font/fontone"
+            android:text="WELCOME TO YOUTUBE \n Register here to be our customer!"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/yt"
+        app:layout_constraintBottom_toBottomOf="@id/user_wallpaper_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_wallpaper_id"
+            app:layout_constraintVertical_bias="0.060000002">
+
+            <EditText
+                android:id="@+id/full_name_user_id"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/provider_edit_text"
+                android:padding="2dp"
+                android:textSize="27dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="0.1"
+                android:hint=" Full name" />
+
+            <EditText
+                android:id="@+id/username_id"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:textSize="27dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/provider_edit_text"
+                android:padding="2dp"
+                android:hint=" Username" />
+
+
+            <EditText
+                android:id="@+id/user_password_id"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/provider_edit_text"
+                android:padding="2dp"
+                android:textSize="27dp"
+                android:hint=" User password"
+                android:inputType="textPassword" />
+
+
+            <EditText
+                android:id="@+id/retype_password_id"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/provider_edit_text"
+                android:padding="2dp"
+                android:textSize="27dp"
+                android:hint=" Re-password"
+                android:inputType="textPassword" />
+
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_marginBottom="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_width="200dp"
+            android:id="@+id/user_sign_up"
+            android:layout_height="40dp"
+            android:background="@drawable/button_order_orange"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="SIGN UP " />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
